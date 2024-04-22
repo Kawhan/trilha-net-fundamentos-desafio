@@ -1,3 +1,5 @@
+using System.Diagnostics.Contracts;
+
 namespace DesafioFundamentos.Models
 {
     public class Estacionamento
@@ -35,6 +37,7 @@ namespace DesafioFundamentos.Models
 
                 int.TryParse(Console.ReadLine(), out horas);
                 valorTotal = precoInicial + precoPorHora * horas;
+
                 veiculos.Remove(placa);
                 Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
             }
@@ -50,9 +53,11 @@ namespace DesafioFundamentos.Models
             if (veiculos.Any())
             {
                 Console.WriteLine("Os veículos estacionados são:");
+                int cont = 1;
                 foreach (var veiculo in veiculos)
                 {
-                    Console.WriteLine(veiculo);
+                    Console.WriteLine($"{cont}°: {veiculo}");
+                    cont++;
                 }
             }
             else
